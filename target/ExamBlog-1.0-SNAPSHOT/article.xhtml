@@ -1,0 +1,34 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
+    <h:head>
+        <title>Facelet Title</title>
+    </h:head>
+    <h:body>
+        <h:outputStylesheet library="css" name="blogStyles.css"/>
+        <h:form id="articleForm" style="width: 65%">
+            <p:commandLink action="index?faces-redirect=true" value="Back Home"/>
+            <p:panel header="#{blogViewController.chosenArticle.title}">
+                <h:outputText value="#{blogViewController.chosenArticle.content}"/>
+            </p:panel>
+            <p:separator/>
+            <p:outputLabel value="Cooments"/>
+            <p:dataGrid value="#{blogViewController.chosenArticle.commentarys}"
+                        var="comment" columns="1" >
+                <p:panel>
+                    <h:outputText value="#{comment.userName} :"/>
+                    <br/>
+                    <blockquote>
+                        <p>#{comment.quote.userName} wrote:</p>
+                        <p>#{comment.quote.comment}</p>
+                    </blockquote>   
+                    <h:outputText value="#{comment.comment}"/>
+                </p:panel>                   
+            </p:dataGrid>
+        </h:form>
+    </h:body>
+</html>
+
